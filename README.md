@@ -1,2 +1,1 @@
-# Front-end-Interview
-For Interview
+本文主要是巩固对前端知识点的理解，资料来源于网络和书本，由本人整理
