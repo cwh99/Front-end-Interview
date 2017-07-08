@@ -1,7 +1,7 @@
 本文主要是巩固对前端知识点的理解，资料来源于网络和书本，由本人整理
 
 1.position的值，relative和absolute分别是相对于谁进行定位的？<br/>
- ·absolute：绝对定位，以使用position定位的上一层组件（不是static定位的父组件）的左上角点为原点进行<br/>
+ #8194·absolute：绝对定位，以使用position定位的上一层组件（不是static定位的父组件）的左上角点为原点进行<br/>
  定位，如无position定位的上一层组件，则以body左上角点为原点来定位<br/>
  ·relative：相对定位，以组件本身的左上角点（普通流）为原点来定位<br/>
  ·fixed（老的IE不支持）：绝对定位，相对于浏览器窗口或frame进行定位<br/>
