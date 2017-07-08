@@ -272,4 +272,39 @@
 	<br/>	if(arr.length<=1){
 		<br/>return arr;
 		<br/>}
-	<br/>var	
+	<br/>var  num = Math.floor(arr.length/2);
+	<br/>var numvalue = arr.splice(num,1);
+	<br/>var left = [];
+	<br/>var right = [];
+	<br/>for(var i=0; i<arr.length;i++){
+	<br/>if(arr[i]<numvalue){
+	<br/>left.push(arr[i]);
+	<br/>}else{
+		<br/>right.push(arr[i]);
+	<br/>}
+	<br/>return quicksort(left).concat([numvalue],quicksort(right));
+	<br/>}
+	<br/></scirpt>
+<br/>25、你觉得jQuery或zepto源码有哪些写的好的地方
+<br>query源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，然后通过传入window对象参数，可以使window对象作为局部变量使用，好处是当<br>jquery中访问window对象的时候，就不用将作用域链退回到顶层作用域了，从而可以更快的访问window对象。同样，传入undefined参数，可以缩短查找<br>undefined时的作用域链。
+
+ <br>   (function( window, undefined ) {
+
+  <br>       //用一个函数域包起来，就是所谓的沙箱
+
+  <br>       //在这里边var定义的变量，属于这个函数域内的局部变量，避免污染全局
+
+  <br>       //把当前沙箱需要的外部变量通过函数参数引入进来
+
+   <br>      //只要保证参数对内提供的接口的一致性，你还可以随意替换传进来的这个参数
+
+   <br>     window.jQuery = window.$ = jQuery;
+
+  <br>  })( window );
+<br>jquery将一些原型属性和方法封装在了jquery.prototype中，为了缩短名称，又赋值给了jquery.fn，这是很形象的写法。
+
+<br>有一些数组或对象的方法经常能使用到，jQuery将其保存为局部变量以提高访问速度。
+
+<br>jquery实现的链式调用可以节约代码，所返回的都是同一个对象，可以提高代码效率。
+<br>26、ES6的了解
+<br>新增模板字符串（为JavaScript提供了简单的字符串插值功能）、箭头函数（操作符左边为输入的参数，而右边则是进行的操作以及返回的值<br>Inputs=>outputs。）、for-of（用来遍历数据—例如数组中的值。）arguments对象可被不定参数和默认参数完美代替。ES6将promise对象纳入规范，提供了原<br>生的Promise对象。增加了let和const命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。ES6规定，var命令和function命令声明的<br>全局变量，属于全局对象的属性；let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。。还有就是引入module模块的概念
