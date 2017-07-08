@@ -207,7 +207,69 @@
 <br/>CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）
 <br/>会触发GPU渲染，请合理使用。过渡使用会引发手机过耗电增加
 <br/>PC端的在移动端同样适用
-<br/>19、什么事是Etag
-	
+<br/>19、什么是Etag
+	<br/>当发送一个服务器请求时，浏览器首先会进行缓存过期判断，浏览器根据缓存过期时间判断缓存文件是否过期
+	<br/>未过期，直接使用缓存结果，在console中可以看到200OK，此时完全使用内存，浏览器和服务器没有任何交互
+	<br/>已过期，发送请求，并带上（1）修改时间和Etag，
+	<br/>服务器根据浏览器传过来的文件修改时间，判断自上一次请求之后，文件是不是没有被修改过；
+	<br/>根据E tag判断文件内容自上一次请求之后，有没有发生变化
+	<br/><br/>若都没有修改过，直接告诉浏览器，文件未被修改-304 Not Moditied,此时叫协议缓存，浏览器和服务器之间有一次交互
+	<br/><br/>若有任意一个条件改动，受理请求，操作同（1）
+	<br/>（1）只有GET请求会被缓存，post请求不会
+<br/>20、Expires和Cache-Control
+	<br/>Expires要求客户端和服务端的时钟严格同步。HTTP1.1引入Cache-Control来克服Expires头的限制。如果max-age和Expires同时出现，则max-<br/>age有更高的优先级。
 
-     
+    <br/>Cache-Control: no-cache, private, max-age=0
+
+    <br/>ETag: abcde
+
+    <br/>Expires: Thu, 15 Apr 2014 20:00:00 GMT
+
+    <br/>Pragma: private
+
+   <br/> Last-Modified: $now // RFC1123 format
+<br/>21、E tag的应用
+	<br/> Etag由服务器端生成，客户端通过If-Match或者说If-None-Match这个条件判断请求来验证资源是否修改。常见的是使用If-None-Match。请求一<br/> 个文件的流程可能如下：
+
+<br/> ====第一次请求===
+
+<br/> 1.客户端发起 HTTP GET 请求一个文件；
+
+<br/> 2.服务器处理请求，返回文件内容和一堆Header，当然包括Etag(例如"2e681a-6-5d044840")(假设服务器支持Etag生成和已经开启了Etag).状态码200
+<br/> ====第二次请求===
+
+<br/> 客户端发起 HTTP GET 请求一个文件，注意这个时候客户端同时发送一个If-None-Match头，这个头的内容就是第一次请求时服务器返回的Etag：2e681a-6-<br/> 5d0448402.服务器判断发送过来的Etag和计算出来的Etag匹配，因此If-None-Match为False，不返回200，返回304，客户端继续使用本地缓存；流程很简<br/> 单，问题是，如果服务器又设置了Cache-Control:max-age和Expires呢，怎么办
+<br/> 答案是同时使用，也就是说在完全匹配If-Modified-Since和If-None-Match即检查完修改时间和Etag之后，
+
+<br/> 服务器才能返回304.(不要陷入到底使用谁的问题怪圈)
+
+<br/> 为什么使用Etag请求头?
+
+<br/> Etag 主要为了解决 Last-Modified 无法解决的一些问题。
+<br/> 22、栈和队列的区别?
+
+<br/> 栈的插入和删除操作都是在一端进行的，而队列的操作却是在两端进行的。
+
+<br/> 队列先进先出，栈先进后出。
+
+<br/> 栈只允许在表尾一端进行插入和删除，而队列只允许在表尾一端进行插入，在表头一端进行删除
+
+<br/>23、栈和堆的区别？
+
+<br/>栈区（stack）—   由编译器自动分配释放   ，存放函数的参数值，局部变量的值等。
+
+<br/>堆区（heap）   —   一般由程序员分配释放，   若程序员不释放，程序结束时可能由OS回收。
+
+<br/>堆（数据结构）：堆可以被看成是一棵树，如：堆排序；
+
+<br/>栈（数据结构）：一种先进后出的数据结构
+<br/>24、快速排序思想及一个实现
+	<br/>1）在数据集中找一个基准点
+	<br/>2）建立两个数组，分别存储左边和右边数组
+	<br/>3）利用递归进行下次比较
+	<br/><script>
+	<br/>function quicksort(arr){
+	<br/>	if(arr.length<=1){
+		<br/>return arr;
+		<br/>}
+	<br/>var	
