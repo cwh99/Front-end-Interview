@@ -132,6 +132,32 @@
 	  		·XSS：获取信息，不需要提前知道其他用户页面的代码和数据包<br/>
 			·CSRF：1）登陆受信任网站A，并在本地生成cookie;2)在不登出A的情况下，访问危险网站<br/>
 	  ·CSRF的防御：在客户端页面加入伪随机数，通过验证码的方法<br/>
+12、web worker 和websocket<br>
+		·web workers规范：为了解决长时间运行javascript进程导致的浏览器冻结用户界面的情况。webworker<br>
+		通过让使用线程、后台进程、或者运行在其他处理器核心上的进程；<br/>
+			1）通过worker = new Worker（URL）加载一个JS文件来创建一个worker，同时返回一个worker实例<br/>
+			2）通过worker。postmessage（data)方法来向worker发送数据<br/>
+			3）绑定worker.onmessage方法来接收worker发送过来的数据
+			4）使用worker.terminate()来终止一个worker的执行
+		·websocket：是web应用程序的传输协议，提供了双向的按序到达的数据流，是HTML5的协议，连接是持久的，<br/>
+		通过在客户端和服务器端保持双工连接，服务器的更新可以及时被推送到客户端，不需要客户端以一定时间去轮询<br/>
+13、HTTP和HTTPS<br/>
+		<br/>HTTP协议在TCP协议之上，在二者之间添加一个安全协议层（SSL或TSL），就是HTTPS
+		<br/>HTTP默认端口号80，HTTPS的端口号443
+14、为什么HTTPS安全
+	<br/>因为网络请求需要中间有很多服务器路由器的转发，中间的节点都有可能被篡改，
+	<br/>如果使用HTTPS，密钥在你和终点站才有，https利用ssl/tls协议传输，它
+	<br/>包含证书，卸载，流量转发，负载均衡，页面适配，浏览器适配，refer传递等，保证传输过程的安全性
+15、对前端模块化的认识
+	<br/>AMD（CMD）是RequireJS（seajs）在推广过程中定义的规范化产出
+	<br/>AMD是提前执行，CMD是延迟执行
+	<br/>AMD推荐的风格通过返回一个对象作为模块对象，CommonJS的风格通过对module.exports或exports的属性
+	<br/>赋值来达到暴露模块对象的目的
+16、javascript垃圾回收方法
+	<br/>
+	
+
+
 	
 	
 
