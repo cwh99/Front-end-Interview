@@ -308,4 +308,69 @@
 <br>jquery实现的链式调用可以节约代码，所返回的都是同一个对象，可以提高代码效率。
 <br>26、ES6的了解
 <br>新增模板字符串（为JavaScript提供了简单的字符串插值功能）、箭头函数（操作符左边为输入的参数，而右边则是进行的操作以及返回的值<br>Inputs=>outputs。）、for-of（用来遍历数据—例如数组中的值。）arguments对象可被不定参数和默认参数完美代替。ES6将promise对象纳入规范，提供了原<br>生的Promise对象。增加了let和const命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。ES6规定，var命令和function命令声明的<br>全局变量，属于全局对象的属性；let命令、const命令、class命令声明的全局变量，不属于全局对象的属性。。还有就是引入module模块的概念
+<br>27、JS的继承方式和优缺点
+<br>28、关于HTTP2.0
+<br>http／2引入了“服务端推”的概念，它允许服务端在客户端需要数据之前就主动将数据发送到客户端缓存中，从而提高性能。
+<br>http／2提供更多的加密支持
+<br>http/2使用多路技术，允许消息在同一个连接上同时交差
+<br>增加了头压缩，即使非常小的请求，其请求和响应的头都只会占用很小比例的带宽
+<br>
+<br>
+<br>defer并行加载js文件，会按照页面上的script标签顺序执行
+<br>async并行加载文件，下载完成后立即执行，不会按照script标签的顺序执行
+<br>29、浮动和清除浮动
+<br>·浮动：浮动元素会脱离文档流并向左或向右浮动，直到碰到父元素或另一个浮动元素。初期是为了解决文字环绕问题
+<br>·浮动的负效果：脱离文档流，盖住普通文档；导致副元素高度塌陷；
+<br>·清除浮动：
+<br>1）clear清除浮动：不允许被清除浮动元素的左右挨着浮动元素，底层原理是在被清除浮动元素的上或者下添加足够的清除空间
+<br>最佳实践：http://www.jianshu.com/p/09bd5873bed4
+<br>// 现代浏览器clearfix方案，不支持IE6/7
+<br>.clearfix:after {
+<br>    display: table;
+<br>    content: " ";
+    <br>clear: both;
+  <br>}
+<br>
+<br>// 全浏览器通用的clearfix方案
+<br>// 引入了zoom以支持IE6/7
+<br>.clearfix:after {
+    <br>display: table;
+    <br>content: " ";
+ <br><br>   clear: both;
+<br>}
+<br>.clearfix{
+<br>    *zoom: 1;
+<br>}
+<br>
+<br>// 全浏览器通用的clearfix方案【推荐】
+<br><br>// 引入了zoom以支持IE6/7
+<br>// 同时加入:before以解决现代浏览器上边距折叠的问题
+<br>.clearfix:before,
+<br>.clearfix:after {
+<br>    display: table;
+<br>    content: " ";
+<br>}
+<br>.clearfix:after {
+<br>    clear: both;
+<br>}
+<br>.clearfix{
+<br>    *zoom: 1;
+<br>}
+<br>·BFC清除浮动：块状格式化上下文，按照块级盒子布局的
+<br>30、如何评价AngularJS和BackboneJS
+<br><br>
+<br>backbone具有依赖性，依赖underscore.js。Backbone + Underscore + jQuery(or Zepto) 就比一个AngularJS 多出了2 次HTTP请求.
+<br><br>
+
+<br>Backbone的Model没有与UI视图数据绑定，而是需要在View中自行操作DOM来更新或读取UI数据。AngularJS与此相反，Model直接与UI视图绑定，Model与UI视<br><br>图的关系，通过directive封装，AngularJS内置的通用directive，就能实现大部分操作了，也就是说，基本不必关心Model与UI视图的关系，直接操作<br>Model就行了，UI视图自动更新。
+
+<br>
+<br>AngularJS的directive，你输入特定数据，他就能输出相应UI视图。是一个比较完善的前端MVW框架，包含模板，数据双向绑定，路由，模块化，服务，依赖注入<br>等所有功能，模板功能强大丰富，并且是声明式的，自带了丰富的 Angular 指令。
+<br>31、用过哪些问题设计模式
+<br>·工厂模式：消除对象间的耦合，解决重复实例化的问题。缺点是无法识别是隶属于哪个对象
+<br>·构造函数模式：解决了重复实例化问题和对象识别问题，不显式创造对象，直接将属性和方法给this对象，没有return语句
+<br>32、说说你对闭包的理解
+<br>闭包是为了设计私有的方法和变量，可以避免全局污染，缺点是闭包会常驻内存，使用不当容易造成内存泄漏。闭包的特性是：
+<br>函数嵌套函数；函数内部可以引用外部参数和变量；参数和变量不会被垃圾回收机制回收
+<br>33、cookie的弊端
 <br>
